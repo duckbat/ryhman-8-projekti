@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'QuickSand';
+    src: url(/assets/Quicksand-Medium.ttf) format('truetype');
+}
+
+* {
+    font-family: 'QuickSand';
+}
+
+/* Nav section */
+nav {
+    border-bottom: 1px solid black;
+}
+
+/* Banner */
+
+
+/* Middle / Main section */
+
+/* Footer section */
