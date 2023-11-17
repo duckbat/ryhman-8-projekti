@@ -22,23 +22,26 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!--Website logo-->
-    <link rel="shortcut icon" type="image/x-icon" href="/images/Logo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="/public/images/Logo.png" />
     <title>Ice Shop</title>
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <a href="#" class="navbar-brand">
+    <!-- Navigation section -->
+    <nav class="navbar navbar-expand-md shadow text-bg-light">
+      <div class="container-xxl">
+        <a href="#" class="navbar-brand ps-4">
           <img
-            src="/images/Logo.png"
+            src = "/public/images/Logo.png" alt="Ice-Dude logo"
             width="40"
-            height="80"
-            class="d-inline-block align-top me-2"
+            height="50"
             alt="Ice-Dude logo"
           />
-          Ice Dude
+          <span class="fw-bold">
+            Ice Dude
+          </span>
         </a>
         <button
           class="navbar-toggler"
@@ -60,10 +63,13 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#">Menu</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link" href="#">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Orders</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -73,7 +79,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown link
+                Catalogue
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Action</a></li>
@@ -91,19 +97,123 @@
     <!-- Main -->
     <main class="container">
       <!-- Banner -->
-      <img src="/images/banner.jpg" alt="main banner" class="img-fluid rounded-bottom-5 shadow mb-2 bg-body rounded" id="banneri"  >
-
-      <!-- Content starts here-->
-      <h1>This is main section</h1>
-      <div>
-
+      <div class="site-banner p-3 p-md-5 rounded-bottom-5">
       </div>
 
-      <!-- Some catalogue -->
+      <!-- Content starts here-->
+      <h1 class="text-center">This is main section</h1>
+      <div class="container-sm mb-5 mt-5">
+        <div class="row">
+          <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Learn more about us</h5>
+                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, praesentium?</p>
+                <a href="#" class="btn btn-secondary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Take a look at our subscription</h5>
+                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, quae.</p>
+                <a href="#" class="btn btn-secondary">
+                  <i class="bi-cart">
+                  </i>
+                  Order subscrition
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!-- Catalogue section -->
+      <h1 class="text-danger-emphasis">Our Top Choices</h1>
+
+      <!-- Catalogue -->
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+          <div class="card">
+            <img src="images/ice-cream_item.jpg" class="card-img-top" alt="ice-cream_item" style="width: auto;">
+            <div class="card-body">
+              <h5 class="card-title">Ice-C 1</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="images/ice-cream_item.jpg" class="card-img-top" alt="ice-cream_item" style="width: auto;">
+            <div class="card-body">
+              <h5 class="card-title">Ice-C 1</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="images/ice-cream_item.jpg" class="card-img-top" alt="ice-cream_item" style="width: auto;">
+            <div class="card-body">
+              <h5 class="card-title">Ice-C 1</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="images/ice-cream_item.jpg" class="card-img-top" alt="ice-cream_item" style="width: auto;">
+            <div class="card-body">
+              <h5 class="card-title">Ice-C 1</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </main>
 
     <!-- Footer -->
-    <footer class="footer"></footer>
+    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+      <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+        <div class="row">
+          <div class="col-lg-3 mb-3">
+            <a class="d-inline-flex align-items-center mb-2 text-body-secondary text-decoration-none" href="/" aria-label="Ice-Dude">
+              <img src="/public/images/Logo.png" style="width: 30px; height: 30px;">
+              <span class="fs-5 ms-2">Ice-Dude</span>
+            </a>
+            <ul class="list-unstyled small">
+              All rights reserved something bla bla bla...
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+            <h5>Menu</h5>
+            <ul class="list-unstyled">
+              
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2 mb-3">
+            <h5>Location</h5>
+            <ul class="list-unstyled">
+              
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2 mb-3">
+            <h5>About us</h5>
+            <ul class="list-unstyled">
+              
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2 mb-3">
+            <h5>Contacts</h5>
+            <ul class="list-unstyled">
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
