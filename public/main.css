@@ -8,13 +8,19 @@
 }
 
 /* Nav section */
-nav {
-    border-bottom: 1px solid black;
-}
+
 
 /* Banner */
-
+.site-banner {
+    display: flex;
+    background-image: url(/public/images/banner.jpg);
+    min-height: 450px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 /* Middle / Main section */
+
 
 /* Footer section */
