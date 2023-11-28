@@ -9,15 +9,11 @@ USE ice_dude;
 -- Table for Users
 CREATE TABLE Users (
     UserID INT PRIMARY KEY AUTO_INCREMENT,
-    Username VARCHAR(255) NOT NULL,
+    Username VARCHAR(255) NOT NULL UNIQUE,
     Password VARCHAR(255) NOT NULL,
-    Email VARCHAR(255) NOT NULL,
-    Phone INT NOT NULL,
-    FirstName VARCHAR(50),
-    LastName VARCHAR(50),
-    Address VARCHAR(255),
-    CONSTRAINT unique_username UNIQUE (Username),
-    CONSTRAINT unique_email UNIQUE (Email)
+    Email VARCHAR(255) NOT NULL UNIQUE,
+    Phone INT NOT NULL UNIQUE,
+    created_at TIMESTAMP NOT NULL
 );
 
 -- Table for Ice Cream item 
@@ -25,7 +21,10 @@ CREATE TABLE IceCream (
     IceCreamID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     IceCreamCategoryID INT NOT NULL,
     IceCreamName VARCHAR(255) NOT NULL,
-    Price DECIMAL(8, 2) NOT NULL
+    IceCreamDescription VARCHAR(255) NOT NULL,
+    IceCreamPrice DECIMAL(8, 2) NOT NULL,
+    PRIMARY KEY (IceCreamID),
+    FOREIGN KEY (IceCreamCategoryID) REFERENCES IceCreamCategory(IceCreamCategoryID);
     -- TODO: add image file
 );
 
@@ -35,7 +34,6 @@ CREATE TABLE IceCreamCategory (
     IceCreamCategoryID INT PRIMARY KEY AUTO_INCREMENT,
     IceCreamCategoryName VARCHAR(255) NOT NULL,
     IceCreamCategoryDescription VARCHAR(255) NOT NULL
-    -- TODO: add image file
 );
 
 
@@ -44,6 +42,7 @@ CREATE TABLE Orders (
     OrderID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     UserID INT,
     OrderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (OrderID),
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
@@ -54,6 +53,7 @@ CREATE TABLE Cart (
     IceCreamID INT NOT NULL,
     Quantity INT NOT NULL,
     CONSTRAINT positive_quantity CHECK (Quantity > 0),
+    PRIMARY KEY (CartID),
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
     FOREIGN KEY (IceCreamID) REFERENCES IceCream(IceCreamID)
 );
@@ -68,3 +68,31 @@ CREATE TABLE IceCream_Comments (
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
     FOREIGN KEY (IceCreamID) REFERENCES IceCream(IceCreamID)
 ); 
+
+
+-- Mock data for IceCreamCategory
+INSERT INTO IceCreamCategory (IceCreamCategoryName, IceCreamCategoryDescription)
+VALUES ('Ice Cream Cone', 'Mmmmm.. Coney Ice Cream'), ('Ice Cream Stick', 'Mmmmm.. Ice Cream Stick'), ('Ice Cream Cup', 'Mmmmm.. Ice Cream Cup'), ('Ice Cream Sandwich', 'Mmmmm.. Ice Cream Sandwich'), ('Ice Cream Bar', 'Mmmmm.. Ice Cream Bar');
+
+-- Mock data for Users
+-- Note: You need to replace 'username' and 'password' with the actual columns in your Users table
+INSERT INTO Users (username, password)
+VALUES ('user1', 'password1'), ('user2', 'password2');
+
+-- Mock data for Orders
+INSERT INTO Orders (UserID)
+SELECT UserID FROM Users;
+
+-- Mock data for IceCream
+-- Note: You need to replace 'IceCreamName', 'IceCreamDescription', and 'IceCreamCategoryID' with the actual columns in your IceCream table
+INSERT INTO IceCream (IceCreamName, IceCreamDescription, IceCreamPrice, IceCreamCategoryID)
+VALUES ('Blueberry Ice Cream', 'Ice Cream with blueberry taste', 2.80, 1), ('Carrot Ice Cream', 'Mmmm... Carrot Ice', 2.90,  2);
+
+-- Mock data for Cart
+INSERT INTO Cart (OrderID, IceCreamID, Quantity)
+SELECT OrderID, IceCreamID, 1 FROM Orders, IceCream;
+
+-- Mock data for IceCream_Comments
+-- Note: You need to replace 'CommentText' with the actual column in your IceCream_Comments table
+INSERT INTO IceCream_Comments (UserID, IceCreamID, CommentText)
+SELECT UserID, IceCreamID, 'This is a comment' FROM Users, IceCream;
