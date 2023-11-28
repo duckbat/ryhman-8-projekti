@@ -4,7 +4,7 @@ DROP DATABASE IF EXISTS ice_dude;
 CREATE DATABASE ice_dude;
 USE ice_dude;
 
--- Tables
+-- Creating new tables
 
 -- Table for Users
 CREATE TABLE Users (
@@ -70,6 +70,8 @@ CREATE TABLE IceCream_Comments (
 ); 
 
 
+-- Adding mock database data
+
 -- Mock data for IceCreamCategory
 INSERT INTO IceCreamCategory (IceCreamCategoryName, IceCreamCategoryDescription)
 VALUES ('Ice Cream Cone', 'Mmmmm.. Coney Ice Cream'), ('Ice Cream Stick', 'Mmmmm.. Ice Cream Stick'), ('Ice Cream Cup', 'Mmmmm.. Ice Cream Cup'), ('Ice Cream Sandwich', 'Mmmmm.. Ice Cream Sandwich'), ('Ice Cream Bar', 'Mmmmm.. Ice Cream Bar');
@@ -96,3 +98,18 @@ SELECT OrderID, IceCreamID, 1 FROM Orders, IceCream;
 -- Note: You need to replace 'CommentText' with the actual column in your IceCream_Comments table
 INSERT INTO IceCream_Comments (UserID, IceCreamID, CommentText)
 SELECT UserID, IceCreamID, 'This is a comment' FROM Users, IceCream;
+
+
+-- Querying data
+
+-- Query data
+-- Get all ice creams in a specific category
+SELECT * FROM IceCream WHERE IceCreamCategoryID = 1;
+
+-- Update data
+-- Update the price of a specific ice cream
+UPDATE IceCream SET IceCreamPrice = 6.99 WHERE IceCreamID = 1;
+
+-- Delete data
+-- Delete a specific ice cream
+DELETE FROM IceCream WHERE IceCreamID = 1;
