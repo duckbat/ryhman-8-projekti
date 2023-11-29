@@ -70,16 +70,24 @@ CREATE TABLE IceCream_Comments (
 ); 
 
 
+
 -- Adding mock database data
 
 -- Mock data for IceCreamCategory
 INSERT INTO IceCreamCategory (IceCreamCategoryName, IceCreamCategoryDescription)
-VALUES ('Ice Cream Cone', 'Mmmmm.. Coney Ice Cream'), ('Ice Cream Stick', 'Mmmmm.. Ice Cream Stick'), ('Ice Cream Cup', 'Mmmmm.. Ice Cream Cup'), ('Ice Cream Sandwich', 'Mmmmm.. Ice Cream Sandwich'), ('Ice Cream Bar', 'Mmmmm.. Ice Cream Bar');
+VALUES 
+('Ice Cream Cone', 'Mmmmm.. Coney Ice Cream'), 
+('Ice Cream Stick', 'Mmmmm.. Ice Cream Stick'), 
+('Ice Cream Cup', 'Mmmmm.. Ice Cream Cup'), 
+('Ice Cream Sandwich', 'Mmmmm.. Ice Cream Sandwich'), 
+('Ice Cream Bar', 'Mmmmm.. Ice Cream Bar');
 
 -- Mock data for Users
 -- Note: You need to replace 'username' and 'password' with the actual columns in your Users table
 INSERT INTO Users (username, password)
-VALUES ('user1', 'password1'), ('user2', 'password2');
+VALUES 
+('user1', 'password1'), 
+('user2', 'password2');
 
 -- Mock data for Orders
 INSERT INTO Orders (UserID)
@@ -88,7 +96,9 @@ SELECT UserID FROM Users;
 -- Mock data for IceCream
 -- Note: You need to replace 'IceCreamName', 'IceCreamDescription', and 'IceCreamCategoryID' with the actual columns in your IceCream table
 INSERT INTO IceCream (IceCreamName, IceCreamDescription, IceCreamPrice, IceCreamCategoryID)
-VALUES ('Blueberry Ice Cream', 'Ice Cream with blueberry taste', 2.80, 1), ('Carrot Ice Cream', 'Mmmm... Carrot Ice', 2.90,  2);
+VALUES 
+('Blueberry Ice Cream', 'Ice Cream with blueberry taste', 2.80, 1), 
+('Carrot Ice Cream', 'Mmmm... Carrot Ice', 2.90,  2);
 
 -- Mock data for Cart
 INSERT INTO Cart (OrderID, IceCreamID, Quantity)
@@ -98,6 +108,7 @@ SELECT OrderID, IceCreamID, 1 FROM Orders, IceCream;
 -- Note: You need to replace 'CommentText' with the actual column in your IceCream_Comments table
 INSERT INTO IceCream_Comments (UserID, IceCreamID, CommentText)
 SELECT UserID, IceCreamID, 'This is a comment' FROM Users, IceCream;
+
 
 
 -- Querying data

@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'QuickSand';
-    src: url(/assets/Quicksand-Medium.ttf) format('truetype');
+    src: url(./assets/Quicksand-Medium.ttf) format('truetype');
 }
 
 * {
@@ -13,7 +13,7 @@
 /* Banner */
 .site-banner {
     display: flex;
-    background-image: url(/public/images/banner.jpg);
+    background-image: url(./images/banner.jpg);
     min-height: 450px;
     background-position: center;
     background-size: cover;
