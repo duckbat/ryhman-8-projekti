@@ -22,25 +22,32 @@
       crossorigin="anonymous"
     ></script>
     <!--Bootstrap icons-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
     <!--Website logo-->
     <link rel="shortcut icon" type="image/x-icon" href="/images/Logo.png" />
     <title>Ice Shop</title>
   </head>
   <body>
+    <!-- Cart button -->
+    <button class="btn btn-primary ms-4 shadow sticker-button" style="width: 85px; height: 85px;">
+      <i class="bi bi-cart-fill" style="font-size: 2rem;"></i>
+    </button>
+
     <!-- Navigation section -->
-    <nav class="navbar navbar-expand-md shadow text-bg-light">
-      <div class="container-xxl">
+    <nav class="navbar navbar-expand-lg shadow text-bg-light">
+      <div class="container-md">
         <a href="#" class="navbar-brand ps-4">
           <img
-            src = "./images/Logo.png" alt="Ice-Dude logo"
+            src="./images/Logo.png"
+            alt="Ice-Dude logo"
             width="40"
             height="50"
             alt="Ice-Dude logo"
           />
-          <span class="fw-bold">
-            Ice Dude
-          </span>
+          <span class="fw-bold"> Ice Dude </span>
         </a>
         <button
           class="navbar-toggler"
@@ -54,21 +61,12 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div
-          class="collapse navbar-collapse nav justify-content-end me-5"
+          class="justify-content-end me-5 ml-auto collapse navbar-collapse"
           id="navbarNavDropdown"
         >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
+          <ul class="nav">
             <li class="nav-item">
               <a class="nav-link" href="#">Menu</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Orders</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -81,10 +79,55 @@
                 Catalogue
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Cone Ice Cream</a></li>
+                <li><a class="dropdown-item" href="#">Stick Ice Cream</a></li>
+                <li><a class="dropdown-item" href="#">Waffle Ice Cream</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Locations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About Us</a>
+            </li>
+            <!-- Profile Picture -->
+            <li class="nav-item dropdown ms-3">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <div class="profile-pic">
+                  <img
+                    src="https://source.unsplash.com/250x250?dog"
+                    alt="Profile Picture"
+                  />
+                </div>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-sliders-h fa-fw"></i> Account</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-cog fa-fw"></i> Settings</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas bi-bag-fill fa-fw"></i> Orders</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a
+                  >
                 </li>
               </ul>
             </li>
@@ -96,8 +139,7 @@
     <!-- Main -->
     <main class="container">
       <!-- Banner -->
-      <div class="site-banner p-3 p-md-5 rounded-bottom-5">
-      </div>
+      <div class="site-banner p-3 p-md-5 rounded-bottom-5"></div>
 
       <!-- Content starts here-->
       <h1 class="text-center">This is main section</h1>
@@ -107,8 +149,11 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Learn more about us</h5>
-                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, praesentium?</p>
-                <a href="#" class="btn btn-secondary">Go somewhere</a>
+                <p class="card-text">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Culpa, praesentium?
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
           </div>
@@ -116,17 +161,18 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Take a look at our subscription</h5>
-                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, quae.</p>
-                <a href="#" class="btn btn-secondary">
-                  <i class="bi-cart">
-                  </i>
+                <p class="card-text">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id,
+                  quae.
+                </p>
+                <a href="#" class="btn btn-primary">
+                  <i class="bi-cart"> </i>
                   Order subscrition
                 </a>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
 
       <!-- Catalogue section -->
@@ -136,42 +182,76 @@
       <div class="row row-cols-1 row-cols-md-2 g-4">
         <div class="col">
           <div class="card">
-            <img src="images/ice-cream_item.jpg" class="card-img-top" alt="ice-cream_item" style="width: auto;">
+            <img
+              src="images/ice-cream_item.jpg"
+              class="card-img-top"
+              alt="ice-cream_item"
+              style="width: auto"
+            />
             <div class="card-body">
               <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="card">
-            <img src="images/ice-cream_item.jpg" class="card-img-top" alt="ice-cream_item" style="width: auto;">
+            <img
+              src="images/ice-cream_item.jpg"
+              class="card-img-top"
+              alt="ice-cream_item"
+              style="width: auto"
+            />
             <div class="card-body">
               <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="card">
-            <img src="images/ice-cream_item.jpg" class="card-img-top" alt="ice-cream_item" style="width: auto;">
+            <img
+              src="images/ice-cream_item.jpg"
+              class="card-img-top"
+              alt="ice-cream_item"
+              style="width: auto"
+            />
             <div class="card-body">
               <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content.
+              </p>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="card">
-            <img src="images/ice-cream_item.jpg" class="card-img-top" alt="ice-cream_item" style="width: auto;">
+            <img
+              src="images/ice-cream_item.jpg"
+              class="card-img-top"
+              alt="ice-cream_item"
+              style="width: auto"
+            />
             <div class="card-body">
               <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
             </div>
           </div>
         </div>
       </div>
-
     </main>
 
     <!-- Footer -->
@@ -179,8 +259,12 @@
       <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
         <div class="row">
           <div class="col-lg-3 mb-3">
-            <a class="d-inline-flex align-items-center mb-2 text-body-secondary text-decoration-none" href="/" aria-label="Ice-Dude">
-              <img src="./images/Logo.png" style="width: 30px; height: 30px;">
+            <a
+              class="d-inline-flex align-items-center mb-2 text-body-secondary text-decoration-none"
+              href="/"
+              aria-label="Ice-Dude"
+            >
+              <img src="./images/Logo.png" style="width: 30px; height: 30px" />
               <span class="fs-5 ms-2">Ice-Dude</span>
             </a>
             <ul class="list-unstyled small">
@@ -189,27 +273,19 @@
           </div>
           <div class="col-6 col-lg-2 offset-lg-1 mb-3">
             <h5>Menu</h5>
-            <ul class="list-unstyled">
-              
-            </ul>
+            <ul class="list-unstyled"></ul>
           </div>
           <div class="col-6 col-lg-2 mb-3">
             <h5>Location</h5>
-            <ul class="list-unstyled">
-              
-            </ul>
+            <ul class="list-unstyled"></ul>
           </div>
           <div class="col-6 col-lg-2 mb-3">
             <h5>About us</h5>
-            <ul class="list-unstyled">
-              
-            </ul>
+            <ul class="list-unstyled"></ul>
           </div>
           <div class="col-6 col-lg-2 mb-3">
             <h5>Contacts</h5>
-            <ul class="list-unstyled">
-              
-            </ul>
+            <ul class="list-unstyled"></ul>
           </div>
         </div>
       </div>
