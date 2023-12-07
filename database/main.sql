@@ -9,6 +9,7 @@ USE ice_dude;
 -- Table for Users
 CREATE TABLE Users (
     UserID INT PRIMARY KEY AUTO_INCREMENT,
+    UserLevel INT CHECK (UserLevel IN (1,2)) NOT NULL,
     Username VARCHAR(255) NOT NULL UNIQUE,
     Password VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL UNIQUE,
@@ -51,11 +52,8 @@ CREATE TABLE Cart (
     CartID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     OrderID INT NOT NULL,
     IceCreamID INT NOT NULL,
-    Quantity INT NOT NULL,
-    CONSTRAINT positive_quantity CHECK (Quantity > 0),
     PRIMARY KEY (CartID),
-    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-    FOREIGN KEY (IceCreamID) REFERENCES IceCream(IceCreamID)
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 );
 
 -- Ice Cream Comments
@@ -67,9 +65,18 @@ CREATE TABLE IceCream_Comments (
     CommentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
     FOREIGN KEY (IceCreamID) REFERENCES IceCream(IceCreamID)
-); 
+);
 
-
+-- Quantity of different ice cream types
+CREATE TABLE IceCream_Quantity (
+    IceCream_Quantity_ID INT PRIMARY KEY AUTO_INCREMENT,
+    IceCreamID INT NOT NULL,
+    CartID INT NOT NULL,
+    Quantity INT NOT NULL,
+    CONSTRAINT positive_quantity CHECK (Quantity > 0),
+    FOREIGN KEY (IceCreamID) REFERENCES IceCream(IceCreamID),
+    FOREIGN KEY (CartID) REFERENCES Cart(CartID)
+);
 
 -- Adding mock database data
 
