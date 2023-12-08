@@ -1,0 +1,61 @@
+{
+    "Users": [
+      {
+        "UserID": 1,
+        "Username": "user1",
+        "Password": "password1",
+        "Email": "user1@example.com",
+        "Phone": 1234567890,
+        "created_at": "2022-01-01T00:00:00Z"
+      },
+      {
+        "UserID": 2,
+        "Username": "user2",
+        "Password": "password2",
+        "Email": "user2@example.com",
+        "Phone": 2343923344,
+        "created_at": "2022-01-01T00:00:00Z"
+      }
+    ],
+
+    "IceCream": [
+      {
+        "IceCreamID": 1,
+        "IceCreamName": "Blueberry Ice Cream",
+        "IceCreamDescription": "Ice Cream with blueberry taste",
+        "IceCreamPrice": 2.80,
+        "IceCreamImage": "http://example.com/images/blueberry.jpg"
+      },
+      {
+        "IceCreamID": 2,
+        "IceCreamName": "Carrot Ice Cream",
+        "IceCreamDescription": "Mmmm... Carrot Ice",
+        "IceCreamPrice": 2.90,
+        "IceCreamImage": "http://example.com/images/blueberry.jpg"
+      }
+    ],
+
+    "Cart": [
+      {
+        "CartID": 1,
+        "UserID": 1,
+        "IceCreamID": 1,
+        "Quantity": 1
+      },
+      {
+        "CartID": 2,
+        "OrderID": 1,
+        "IceCreamID": 2,
+        "Quantity": 2
+      }
+    ],
+
+    "Orders": [
+      {
+        "OrderID": 1,
+        "UserID": 1,
+        "CartID": 1
+      }
+    ]
+
+  }
