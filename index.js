@@ -9,37 +9,47 @@ const port = 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/public');
+
 // add middlewares
 app.use(express.static(path.join(__dirname, 'public')));
 
 // start with main page
 app.get('/', (req, res) => {
   console.log('Main page');
-  res.render('/public/index');
+  res.render('index');
 });
 
 // menu page
-app.get('/menu', (req, res) => {
+app.get('/catalog', (req, res) => {
   console.log('Catalog page');
-  res.sendFile(__dirname + '/public/pages/catalog/catalog.html');
+  res.render('pages/catalog/catalog');
 });
 
 // login page
 app.get('/login/', (req, res) => {
   console.log('Login page');
-  res.sendFile(__dirname + '/public/pages/login/login.html');
+  res.render('pages/login/login');
 });
 
 // profile page
 app.get('/profile', (req, res) => {
   console.log('Profile page');
-  res.sendFile(__dirname + '/public/pages/profile/profile.html');
+  res.render('pages/profile/profile');
+});
+
+// orders page
+app.get('/orders', (req, res) => {
+  console.log('Orders page');
+  res.render('pages/orders/orders');
 });
 
 // admins page
 app.get('/admin', (req, res) => {
   console.log('Admins page');
-  res.sendFile(__dirname + '/admin/admin.html');
+  res.render('admin/admin');
 });
 
 
