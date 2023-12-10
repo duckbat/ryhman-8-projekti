@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'QuickSand';
+    src: url(/assets/Quicksand-Medium.ttf) format('truetype');
+}
+
+* {
+    font-family: 'QuickSand';
+}
+
+/* Sticky-Button */
+.sticker-button {
+  position: fixed;
+  bottom: 25px; /* adjust the distance from the bottom as needed */
+  right: 25px; /* adjust the distance from the right as needed */
+  z-index: 1000; /* ensure the button is above other elements */
+}
+
+
+/* Nav section */
+
+li {
+    font-size: 1.5rem;
+}
+
+
+/* Profile Picture */
+.profile-pic{
+    display: inline-block;
+    vertical-align: middle;
+     width: 40px;
+     height: 40px;
+     overflow: hidden;
+    border-radius: 50%;
+ }
+ 
+ .profile-pic img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+ }
+ .profile-menu .dropdown-menu {
+   right: 0;
+   left: unset;
+ }
+ .profile-menu .fa-fw {
+   margin-right: 10px;
+ }
+ 
+ .toggle-change::after {
+   border-top: 0;
+   border-bottom: 0.3em solid;
+ }
+
+/* Banner */
+.site-banner {
+    display: flex;
+    background-image: url(/images/banner.jpg);
+    min-height: 450px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
+
+/* Middle / Main section */
+
+
+/* Footer section */

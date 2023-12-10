@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="catalog.css" />
     <!--Fontawesome-->
     <script
       src="https://kit.fontawesome.com/ff00a6193a.js"
@@ -41,7 +41,7 @@
       <div class="container-md">
         <a href="#" class="navbar-brand ps-4">
           <img
-            src="./images/Logo.png"
+            src="/public/images/Logo.png"
             alt="Ice-Dude logo"
             width="40"
             height="50"
@@ -65,27 +65,14 @@
           id="navbarNavDropdown"
         >
           <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Menu</a>
-            </li>
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                class="nav-link"
                 href="#"
                 role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
               >
-                Catalogue
+                Menu
               </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Cone Ice Cream</a></li>
-                <li><a class="dropdown-item" href="#">Stick Ice Cream</a></li>
-                <li><a class="dropdown-item" href="#">Waffle Ice Cream</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Locations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">About Us</a>
@@ -136,123 +123,68 @@
       </div>
     </nav>
 
-    <!-- Main -->
-    <main class="container">
-      <!-- Banner -->
-      <div class="site-banner p-3 p-md-5 rounded-bottom-5"></div>
+    <main>
+    <!-- Catalog -->
+    <div class="container mt-5">
+      <h2 class="text-center mb-4">Ice Cream Menu</h2>
+  
+      <div class="card-deck">
+        <!-- Ice Cream Flavor 1 -->
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img src="/public/images/ice-cream_item.jpg" class="card-img" alt="Flavor 1" style="max-width: 100%; height: auto;">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h5 class="card-title">Chocolate Chip Cookie Dough</h5>
+                        <p class="card-text">Creamy vanilla ice cream with chunks of chocolate chip cookie dough.</p>
+                        <p class="card-text"><small class="text-muted">Price: $4.99</small></p>
+                        <p class="card-text"><small class="text-muted">Special Dietary Requirements: None</small></p>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-      <!-- Content starts here-->
-      <h1 class="text-center">This is main section</h1>
-      <div class="container-sm mb-5 mt-5">
-        <div class="row">
-          <div class="col-sm-6 mb-3 mb-sm-0">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Learn more about us</h5>
-                <p class="card-text">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Culpa, praesentium?
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+          <!-- Ice Cream Flavor 2 -->
+          <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img src="/public/images/ice-cream_item.jpg" class="card-img" alt="Flavor 2" style="max-width: 100%; height: auto;">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h5 class="card-title">Strawberry Cheesecake</h5>
+                        <p class="card-text">Delicious strawberry ice cream with swirls of cheesecake.</p>
+                        <p class="card-text"><small class="text-muted">Price: $5.99</small></p>
+                        <p class="card-text"><small class="text-muted">Special Dietary Requirements: None</small></p>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Ice Cream Flavor 3 -->
+        <div class="card">
+          <div class="row no-gutters">
+              <div class="col-md-3">
+                  <img src="/public/images/ice-cream_item.jpg" class="card-img" alt="Flavor 3" style="max-width: 100%; height: auto;">
               </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Take a look at our subscription</h5>
-                <p class="card-text">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id,
-                  quae.
-                </p>
-                <a href="#" class="btn btn-primary">
-                  <i class="bi-cart"> </i>
-                  Order subscrition
-                </a>
+              <div class="col-md-9">
+                  <div class="card-body">
+                      <h5 class="card-title">Strawberry Ice Cream</h5>
+                      <p class="card-text">Delicious strawberry ice cream.</p>
+                      <p class="card-text"><small class="text-muted">Price: $6.99</small></p>
+                      <p class="card-text"><small class="text-muted">Special Dietary Requirements: None</small></p>
+                      <a href="#" class="btn btn-primary">Add to Cart</a>
+                  </div>
               </div>
-            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Catalogue section -->
-      <h1 class="text-danger-emphasis">Our Top Choices</h1>
-
-      <!-- Catalogue -->
-      <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col">
-          <div class="card">
-            <img
-              src="images/ice-cream_item.jpg"
-              class="card-img-top"
-              alt="ice-cream_item"
-              style="width: auto"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="images/ice-cream_item.jpg"
-              class="card-img-top"
-              alt="ice-cream_item"
-              style="width: auto"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="images/ice-cream_item.jpg"
-              class="card-img-top"
-              alt="ice-cream_item"
-              style="width: auto"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="images/ice-cream_item.jpg"
-              class="card-img-top"
-              alt="ice-cream_item"
-              style="width: auto"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+    </div>
+  </div>  
+  </main>
 
     <!-- Footer -->
     <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
@@ -264,7 +196,7 @@
               href="/"
               aria-label="Ice-Dude"
             >
-              <img src="./images/Logo.png" style="width: 30px; height: 30px" />
+              <img src="/public/images/Logo.png" style="width: 30px; height: 30px" />
               <span class="fs-5 ms-2">Ice-Dude</span>
             </a>
             <ul class="list-unstyled small">
@@ -273,10 +205,6 @@
           </div>
           <div class="col-6 col-lg-2 offset-lg-1 mb-3">
             <h5>Menu</h5>
-            <ul class="list-unstyled"></ul>
-          </div>
-          <div class="col-6 col-lg-2 mb-3">
-            <h5>Location</h5>
             <ul class="list-unstyled"></ul>
           </div>
           <div class="col-6 col-lg-2 mb-3">
