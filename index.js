@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // add middlewares
-app.use(express.static(path.join(__dirname, 'public', 'files')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // start with main page
 app.get('/', (req, res) => {
