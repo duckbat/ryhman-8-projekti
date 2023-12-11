@@ -22,8 +22,8 @@
         "UserID": 3,
         "UserLevel": 1,
         "Username": "user2",
-        "Password": "password1",
-        "Email": "user1@example.com",
+        "Password": "password2",
+        "Email": "user2@example.com",
         "Phone": 22222222,
         "created_at": "2022-01-01T00:00:00Z"
       },
