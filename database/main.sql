@@ -16,6 +16,7 @@ CREATE TABLE IceCream (
     IceCreamID INT PRIMARY KEY AUTO_INCREMENT,
     IceCreamName VARCHAR(255) NOT NULL,
     IceCreamDescription VARCHAR(255) NOT NULL,
+    IceCreamDietary VARCHAR(255) NOT NULL,
     IceCreamPrice DECIMAL(8, 2) NOT NULL,
     IceCreamImage VARCHAR(255), -- URL path to image
 );

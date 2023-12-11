@@ -2,18 +2,38 @@
     "Users": [
       {
         "UserID": 1,
-        "Username": "user1",
-        "Password": "password1",
-        "Email": "user1@example.com",
-        "Phone": 1234567890,
+        "UserLevel": 2,
+        "Username": "admin",
+        "Password": "password",
+        "Email": "",
+        "Phone": "",
         "created_at": "2022-01-01T00:00:00Z"
       },
       {
         "UserID": 2,
+        "UserLevel": 1,
+        "Username": "user1",
+        "Password": "password1",
+        "Email": "user1@example.com",
+        "Phone": 11111111,
+        "created_at": "2022-01-01T00:00:00Z"
+      },
+      {
+        "UserID": 3,
+        "UserLevel": 1,
         "Username": "user2",
-        "Password": "password2",
-        "Email": "user2@example.com",
-        "Phone": 2343923344,
+        "Password": "password1",
+        "Email": "user1@example.com",
+        "Phone": 22222222,
+        "created_at": "2022-01-01T00:00:00Z"
+      },
+      {
+        "UserID": 4,
+        "UserLevel": 1,
+        "Username": "user3",
+        "Password": "password3",
+        "Email": "user3@example.com",
+        "Phone": 33333333,
         "created_at": "2022-01-01T00:00:00Z"
       }
     ],
@@ -23,15 +43,33 @@
         "IceCreamID": 1,
         "IceCreamName": "Blueberry Ice Cream",
         "IceCreamDescription": "Ice Cream with blueberry taste",
-        "IceCreamPrice": 2.80,
+        "IceCreamDietary": ["LF", "GF", "V"],
+        "IceCreamPrice": 2.90,
         "IceCreamImage": "http://example.com/images/blueberry.jpg"
       },
       {
         "IceCreamID": 2,
         "IceCreamName": "Carrot Ice Cream",
         "IceCreamDescription": "Mmmm... Carrot Ice",
+        "IceCreamDietary": ["LF", "GF", "V"],
         "IceCreamPrice": 2.90,
-        "IceCreamImage": "http://example.com/images/blueberry.jpg"
+        "IceCreamImage": "http://example.com/images/mud.jpg"
+      },
+      {
+        "IceCreamID": 3,
+        "IceCreamName": "Mud Ice Cream",
+        "IceCreamDescription": "Have you eve tasted the mud?",
+        "IceCreamDietary": ["LF", "GF", "V"],
+        "IceCreamPrice": 2.90,
+        "IceCreamImage": "http://example.com/images/mud.jpg"
+      },
+      {
+        "IceCreamID": 4,
+        "IceCreamName": "Strawberry Ice Cream",
+        "IceCreamDescription": "Ice Cream with strawberry taste. Most basic shi eve",
+        "IceCreamDietary": ["LF", "GF", "V"],
+        "IceCreamPrice": 3.10,
+        "IceCreamImage": "http://example.com/images/strawberry.jpg"
       }
     ],
 
@@ -44,7 +82,7 @@
       },
       {
         "CartID": 2,
-        "OrderID": 1,
+        "UserID": 1,
         "IceCreamID": 2,
         "Quantity": 2
       }
