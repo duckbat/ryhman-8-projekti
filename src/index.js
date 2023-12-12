@@ -36,15 +36,49 @@ app.get('', (req, res) => {
 });
 
 // catalog page
-// index page
 app.get('/catalog', (req, res) => {
   res.render('pages/catalog', {
-    title: 'Catalog page',
+    title: 'Our menu',
     js: [],
     data: {},
   });
 });
 
+// about page
+app.get('/about', (req, res) => {
+  res.render('pages/about', {
+    title: 'About us',
+    js: [],
+    data: {},
+  });
+});
+
+// cart page
+app.get('/cart', (req, res) => {
+  res.render('pages/cart', {
+    title: 'Cart page',
+    js: [],
+    data: {},
+  });
+});
+
+// login page
+app.get('/login', (req, res) => {
+  res.render('pages/login', {
+    title: 'Login page',
+    js: [],
+    data: {},
+  });
+});
+
+// orders page
+app.get('/orders', (req, res) => {
+  res.render('pages/orders', {
+    title: 'Orders page',
+    js: [],
+    data: {},
+  });
+});
 
 // Routes
 app.use("/", routes);
