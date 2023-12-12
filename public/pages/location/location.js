@@ -16,7 +16,7 @@ var circle = L.circle([60.184977, 24.956837], {
   color: "red",
   fillColor: "#f03",
   fillOpacity: 0.5,
-  radius: 5000,
+  radius: 6000,
 }).addTo(map);
 
 // Adding pop-ups
