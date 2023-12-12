@@ -1,0 +1,10 @@
+[
+  {
+    "level_id": 1,
+    "level_name": "user"
+  },
+  {
+    "level_id": 2,
+    "level_name": "admin"
+  }
+]

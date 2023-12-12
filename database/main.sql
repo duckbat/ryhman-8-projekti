@@ -2,6 +2,11 @@ DROP DATABASE IF EXISTS ice_dude;
 CREATE DATABASE ice_dude;
 USE ice_dude;
 
+CREATE TABLE UserLevels (
+    level_id INT PRIMARY KEY AUTO_INCREMENT,
+    level_name VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE Users (
     UserID INT PRIMARY KEY AUTO_INCREMENT,
     UserLevel INT CHECK (UserLevel IN (1,2)) NOT NULL,
@@ -9,7 +14,8 @@ CREATE TABLE Users (
     Password VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL UNIQUE,
     Phone INT NOT NULL UNIQUE,
-    created_at TIMESTAMP NOT NULL
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserLevel) REFERENCES UserLevels(level_id)
 );
 
 CREATE TABLE IceCream (

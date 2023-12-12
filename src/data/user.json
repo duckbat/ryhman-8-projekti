@@ -1,0 +1,38 @@
+[
+  {
+    "UserID": 1,
+    "UserLevel": 2,
+    "Username": "admin",
+    "Password": "password",
+    "Email": "",
+    "Phone": "",
+    "created_at": "2022-01-01T00:00:00Z"
+  },
+  {
+    "UserID": 2,
+    "UserLevel": 1,
+    "Username": "user1",
+    "Password": "password1",
+    "Email": "user1@example.com",
+    "Phone": 11111111,
+    "created_at": "2022-01-01T00:00:00Z"
+  },
+  {
+    "UserID": 3,
+    "UserLevel": 1,
+    "Username": "user2",
+    "Password": "password2",
+    "Email": "user2@example.com",
+    "Phone": 22222222,
+    "created_at": "2022-01-01T00:00:00Z"
+  },
+  {
+    "UserID": 4,
+    "UserLevel": 1,
+    "Username": "user3",
+    "Password": "password3",
+    "Email": "user3@example.com",
+    "Phone": 33333333,
+    "created_at": "2022-01-01T00:00:00Z"
+  }
+]

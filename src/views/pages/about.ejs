@@ -2,11 +2,65 @@
 <%- include('../partials/button'); %> 
 <%- include('../partials/nav'); %>
 
+<!-- Done by Antti -->
 
+<style>
+    #map {
+        height: 600px;
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    #about-info {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h2 {
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+</head>
+<body>
+<h2>Our location and info about us</h2>
 
+<div id="map"></div>
 
+<div id="about-info">
+    <h3>About Us</h3>
+    <p>Welcome to our business! We are dedicated to providing ice cream to you.</p>
+    <p>We can serve you in the area that you can see in the map or you can visit our store.</p>
+</div>
 
+<script>
+    // Creating map
+var map = L.map("map").setView([60.184977, 24.956837], 11); // Setting coordinates and zoom level
 
+// Adding tile layer
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map);
 
+// Adding location marker
+var marker = L.marker([60.184977, 24.956837]).addTo(map);
+
+// Adding circle to map
+var circle = L.circle([60.184977, 24.956837], {
+  color: "red",
+  fillColor: "#f03",
+  fillOpacity: 0.5,
+  radius: 6000,
+}).addTo(map);
+
+// Adding pop-ups
+marker
+  .bindPopup("<b>This is our location</b><br>We serve you here")
+  .openPopup();
+
+circle.bindPopup("We deliver to you in this area");
+</script>
 
 <%- include('../partials/footer'); %>

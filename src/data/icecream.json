@@ -1,0 +1,42 @@
+[
+  {
+    "IceCreamID": 1,
+    "IceCreamName": "Blueberry Ice Cream",
+    "IceCreamDescription": "Ice Cream with blueberry taste",
+    "IceCreamDietary": ["LF", "GF", "V"],
+    "IceCreamPrice": 2.9,
+    "IceCreamImage": "/images/ice-cream_item.jpg"
+  },
+  {
+    "IceCreamID": 2,
+    "IceCreamName": "Carrot Ice Cream",
+    "IceCreamDescription": "Mmmm... Carrot Ice",
+    "IceCreamDietary": ["LF", "GF", "V"],
+    "IceCreamPrice": 2.9,
+    "IceCreamImage": "/images/ice-cream_item.jpg"
+  },
+  {
+    "IceCreamID": 3,
+    "IceCreamName": "Mud Ice Cream",
+    "IceCreamDescription": "Have you eve tasted the mud?",
+    "IceCreamDietary": ["LF", "GF", "V"],
+    "IceCreamPrice": 2.9,
+    "IceCreamImage": "/images/ice-cream_item.jpg"
+  },
+  {
+    "IceCreamID": 4,
+    "IceCreamName": "Strawberry Ice Cream",
+    "IceCreamDescription": "Ice Cream with strawberry taste. Most basic shi eve",
+    "IceCreamDietary": ["LF", "GF", "V"],
+    "IceCreamPrice": 3.1,
+    "IceCreamImage": "/images/ice-cream_item.jpg"
+  },
+  {
+    "IceCreamID": 5,
+    "IceCreamName": "Vanilla Ice Cream",
+    "IceCreamDescription": "Ice Cream with vanilla taste. Most basic shi eve",
+    "IceCreamDietary": ["LF", "GF", "V"],
+    "IceCreamPrice": 3.1,
+    "IceCreamImage": "/images/ice-cream_item.jpg"
+  }
+]

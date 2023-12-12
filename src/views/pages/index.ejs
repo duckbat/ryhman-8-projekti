@@ -1,119 +1,71 @@
 <%- include('../partials/head'); %>
-<%- include('../partials/button'); %> 
+<%- include('../partials/button'); %>
 <%- include('../partials/nav'); %>
-    <!-- Main -->
-    <main class="container">
-      <!-- Banner -->
-      <div class="site-banner p-3 p-md-5 rounded-bottom-5"></div>
 
-      <!-- Content starts here-->
-      <h1 class="text-center">This is main section</h1>
-      <div class="container-sm mb-5 mt-5">
-        <div class="row">
-          <div class="col-sm-6 mb-3 mb-sm-0">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Learn more about us</h5>
-                <p class="card-text">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa,
-                  praesentium?
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Take a look at our subscription</h5>
-                <p class="card-text">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id,
-                  quae.
-                </p>
-                <a href="#" class="btn btn-primary">
-                  <i class="bi-cart"> </i>
-                  Order subscrition
-                </a>
-              </div>
-            </div>
+<main class="container">
+  <!-- Banner -->
+  <div class="site-banner p-3 p-md-5 rounded-bottom-5"></div>
+
+  <!-- Content starts here-->
+  <h1 class="text-center">This is main section</h1>
+
+  <div class="container-sm mb-5 mt-5">
+    <!-- Cards -->
+    <div class="row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Learn more about us</h5>
+            <p class="card-text">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa,
+              praesentium?
+            </p>
+            <a href="/about" class="btn btn-primary">Check our location</a>
           </div>
         </div>
       </div>
-
-      <!-- Catalogue section -->
-      <h1 class="text-danger-emphasis">Our Top Choices</h1>
-
-      <!-- Catalogue -->
-      <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col">
-          <div class="card">
-            <img
-              src="images/ice-cream_item.jpg"
-              class="card-img-top"
-              alt="ice-cream_item"
-              style="width: auto"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="images/ice-cream_item.jpg"
-              class="card-img-top"
-              alt="ice-cream_item"
-              style="width: auto"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="images/ice-cream_item.jpg"
-              class="card-img-top"
-              alt="ice-cream_item"
-              style="width: auto"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="images/ice-cream_item.jpg"
-              class="card-img-top"
-              alt="ice-cream_item"
-              style="width: auto"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ice-C 1</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit longer.
-              </p>
-            </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">About our menu</h5>
+            <p class="card-text">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id,
+              quae.
+            </p>
+            <a href="/catalog" class="btn btn-primary">
+              <i class="bi-cart"> </i>
+              Check our menu
+            </a>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+  </div>
+
+  <!-- Catalogue section -->
+  <h1 class="text-danger-emphasis">Our Top Choices</h1>
+
+  <!-- Catalogue -->
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% data.iceCreams.slice(0, 4).forEach(iceCream => { %>
+      <div class="col">
+        <div class="card">
+          <img
+            src="<%= iceCream.IceCreamImage %>"
+            class="card-img-top"
+            alt="<%= iceCream.IceCreamName %>"
+            style="width: auto; max-height: 350px; object-fit: cover; object-position: center;"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= iceCream.IceCreamName %></h5>
+            <p class="card-text">
+              <%= iceCream.IceCreamDescription %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</main>
 
 <%- include('../partials/footer'); %>

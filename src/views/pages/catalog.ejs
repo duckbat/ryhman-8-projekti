@@ -1,96 +1,34 @@
 <%- include('../partials/head'); %>
 <%- include('../partials/button'); %> 
 <%- include('../partials/nav'); %>
+
 <main>
-    <!-- Catalog -->
-    <div class="container mt-5">
-      <h2 class="text-center mb-4">Ice Cream Menu</h2>
-
-      <div class="card-deck">
-        <!-- Ice Cream Flavor 1 -->
+  <!-- Catalog -->
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Ice Cream Menu</h2>
+    
+    <% data.iceCreams.forEach(iceCream => { %>
+      <div class="card-deck mb-4 shadow-sm">
         <div class="card">
           <div class="row no-gutters">
             <div class="col-md-3">
               <img
-                src="/images/ice-cream_item.jpg"
+                src="<%= iceCream.IceCreamImage %>"
                 class="card-img"
-                alt="Flavor 1"
-                style="max-width: 100%; height: auto"
+                alt="<%= iceCream.IceCreamName %>"
+                style="max-width: 100%; max-height: 250px; object-fit: cover; object-position: center;"
               />
             </div>
             <div class="col-md-9">
               <div class="card-body">
-                <h5 class="card-title">Chocolate Chip Cookie Dough</h5>
+                <h5 class="card-title"><%= iceCream.IceCreamName %></h5>
+                <p class="card-text"><%= iceCream.IceCreamDescription %></p>
                 <p class="card-text">
-                  Creamy vanilla ice cream with chunks of chocolate chip
-                  cookie dough.
-                </p>
-                <p class="card-text">
-                  <small class="text-muted">Price: $4.99</small>
+                  <small class="text-muted">Price: $<%= iceCream.IceCreamPrice.toFixed(2) %></small>
                 </p>
                 <p class="card-text">
                   <small class="text-muted"
-                    >Special Dietary Requirements: None</small
-                  >
-                </p>
-                <a href="#" class="btn btn-primary">Add to Cart</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Ice Cream Flavor 2 -->
-        <div class="card">
-          <div class="row no-gutters">
-            <div class="col-md-3">
-              <img
-                src="/images/ice-cream_item.jpg"
-                class="card-img"
-                alt="Flavor 2"
-                style="max-width: 100%; height: auto"
-              />
-            </div>
-            <div class="col-md-9">
-              <div class="card-body">
-                <h5 class="card-title">Strawberry Cheesecake</h5>
-                <p class="card-text">
-                  Delicious strawberry ice cream with swirls of cheesecake.
-                </p>
-                <p class="card-text">
-                  <small class="text-muted">Price: $5.99</small>
-                </p>
-                <p class="card-text">
-                  <small class="text-muted"
-                    >Special Dietary Requirements: None</small
-                  >
-                </p>
-                <a href="#" class="btn btn-primary">Add to Cart</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Ice Cream Flavor 3 -->
-        <div class="card">
-          <div class="row no-gutters">
-            <div class="col-md-3">
-              <img
-                src="/images/ice-cream_item.jpg"
-                class="card-img"
-                alt="Flavor 3"
-                style="max-width: 100%; height: auto"
-              />
-            </div>
-            <div class="col-md-9">
-              <div class="card-body">
-                <h5 class="card-title">Strawberry Ice Cream</h5>
-                <p class="card-text">Delicious strawberry ice cream.</p>
-                <p class="card-text">
-                  <small class="text-muted">Price: $6.99</small>
-                </p>
-                <p class="card-text">
-                  <small class="text-muted"
-                    >Special Dietary Requirements: None</small
+                    >Special Dietary Requirements: <%= iceCream.IceCreamDietary.join(', ') || 'None' %></small
                   >
                 </p>
                 <a href="#" class="btn btn-primary">Add to Cart</a>
@@ -99,6 +37,9 @@
           </div>
         </div>
       </div>
-    </div>
-  </main>
-  <%- include('../partials/footer'); %>
+    <% }) %>
+
+  </div>
+</main>
+
+<%- include('../partials/footer'); %>

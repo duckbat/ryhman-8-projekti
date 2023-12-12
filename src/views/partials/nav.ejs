@@ -28,11 +28,18 @@
     >
       <ul class="nav">
         <li class="nav-item dropdown">
+          <a class="nav-link" href="/" role="button"> Main </a>
+        </li>
+        <li class="nav-item dropdown">
           <a class="nav-link" href="/catalog" role="button"> Menu </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/about">About Us</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login" id="loginButton"><i class="bi bi-person-fill"></i>Log In</a>
+        </li>
+
 
         <!-- Profile Picture -->
         <li class="nav-item dropdown ms-3">
@@ -59,9 +66,7 @@
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
-              <a class="dropdown-item" href="#"
-                ><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a
-              >
+              <a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
             </li>
           </ul>
         </li>
@@ -69,3 +74,19 @@
     </div>
   </div>
 </nav>
+
+<script>
+  // Function to simulate login
+  function login() {
+    // Assuming successful login
+    document.getElementById('loginButton').style.display = 'none';
+    document.getElementById('profileDropdown').style.display = 'inline-block';
+  }
+
+  // Function to simulate logout
+  function logout() {
+    // Assuming successful logout
+    document.getElementById('loginButton').style.display = 'inline-block';
+    document.getElementById('profileDropdown').style.display = 'none';
+  }
+</script>

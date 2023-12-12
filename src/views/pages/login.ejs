@@ -1,35 +1,43 @@
-<%- include('../partials/head'); %>
-<%- include('../partials/button'); %> 
-<%- include('../partials/nav'); %>
-    <div class="login-container">
-        <div class="form-container">
-            <h2>Login to Your Ice Cream Account</h2>
-            <form action="login_process.php" method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+<%- include('../partials/head'); %> <%- include('../partials/button'); %>
+<%-include('../partials/nav'); %>
 
-                <!-- Show password checkbox and label -->
-                <div class="show-password-container">
-                    <input type="checkbox" id="show-password" class="show-password-checkbox">
-                    <label for="show-password">Show Password</label>
-                </div>
-                
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+<div class="container" id="log-con">
+  <div class="login-container">
+    <h2>Login to Your Account</h2>
+    <form action="/api/auth/login" method="post">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        class="form-control"
+        required
+      />
+      
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          type="text"
+          id="password"
+          name="password"
+          class="form-control"
+          required
+        />
+      </div>
 
-                
+      <button type="submit" class="btn btn-success" style="margin-top: 20px;">Login</button>
+    </form>
+  </div>
+</div>
 
-                <!-- Login button -->
-                <button type="submit">Login</button>
-            </form>
+<style>
+  #log-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+  }
+  
+</style>
 
-            <!-- "Did you forget your password?" link -->
-            <a href="#">Did you forget your password?</a>
-        </div>
-
-        <!-- Image placeholder -->
-        <div class="image-placeholder">
-            <img src="/public/images/ice-cream_item.jpg" alt="Ice Cream Item" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-        </div>
-    </div>
 <%- include('../partials/footer'); %>
