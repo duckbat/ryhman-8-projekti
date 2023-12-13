@@ -1,19 +1,31 @@
-import jwt from "jsonwebtoken";
 import "dotenv/config";
 import { login } from "../models/user-model.mjs";
+import jwt from "jsonwebtoken";
 
-const postLogin = async (req, res) => {
-  // TODO: use model to query sql for user info (username/pw)
-  const user = await login(req.body);
-  if (user.error) {
-    return next(new Error(result.error));
-  }
-  console.log("postLogin", user);
+
+const postLogin = async (req, res, next) => {
   try {
-    const token = jwt.sign(user, process.env.JWT_SECRET);
-    res.json({ message: "logged in", token, user });
+    // Use model to query SQL for user info (username/password)
+    const user = await login(req.body);
+
+    // Handle invalid credentials
+    if (!user) {
+      return res.status(401).json({ message: "Invalid credentials" }); // change to website display of wrong user
+    }
+
+    // Check user level
+    if (user.UserLevel === 2) {
+      // Redirect to additional page for user level 2
+      return res.redirect('/admin');
+    } else if (user.UserLevel === 1) {
+      return res.redirect('/catalog');
+    }
+
+    // Return user information without creating a token
+    res.json({ message: "Logged in", user });
   } catch (error) {
-    res.status(401).json({ message: "invalid username/password" });
+    // Pass other errors to the error-handling middleware
+    next(error);
   }
 };
 

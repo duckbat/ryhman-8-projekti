@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import { addUser } from "../models/user-model.mjs";
+import { addUser, fetchUsers, fetchUsersID } from "../models/user-model.mjs";
 
 const postUser = async (req, res) => {
   const errors = validationResult(req);
@@ -14,12 +14,16 @@ const postUser = async (req, res) => {
 
 // Following functions are just stubs at the moment
 
-const getUsers = (req, res) => {
-  res.json({ users: "get" });
+const getUsers = async (req, res) => {
+  const users = await fetchUsers();
+
+  res.json(users);
 };
 
-const getUserById = (req, res) => {
-  res.json({ message: "getUserById" });
+const getUserById = async (req, res) => {
+  const usersID = await fetchUsersID;
+
+  res.json(usersID);
 };
 
 const putUser = (req, res) => {

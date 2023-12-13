@@ -1,9 +1,10 @@
-import fs from 'fs/promises';
 import path from "path";
 import express from "express";
-import {fileURLToPath} from "url";
-import userRouter from './routes/user-router.mjs';
-import authRouter from './routes/auth-router.mjs';
+import { fileURLToPath } from "url";
+import userRouter from "./routes/user-router.mjs";
+import authRouter from "./routes/auth-router.mjs";
+import { login } from "./models/user-model.mjs";
+import { promisePool } from './utils/database.mjs';
 /* import adminRouter from './routes/admin-router.mjs'; */
 /* import iceRouter from "./routes/iceCreamRoute.mjs"; */
 
@@ -15,108 +16,133 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
 
 // ****  serve html with ejs template engine ****
 // set the view engine to ejs
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views/'));
-
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views/"));
 
 // auth endpoints
-app.use('/api/auth', authRouter);
+app.use("/api/auth", authRouter);
 
 // user endpoints
-app.use('/api/users', userRouter);
-
-// iceCream endpoints
-// app.use('/api/media', iceRouter);
+app.use("/api/users", userRouter);
 
 
-// routes
 
-// admin endpoints
-/* app.use('/admin', adminRouter); */
 
-// pages endpoints
-// index page
-app.get('/', async (req, res) => {
+// Routes
+// admins page
+app.get('/admin', async (req, res) => {
   try {
-    const iceCreamData = await readJsonFile('./src/data/icecream.json'); // Adjust the path if necessary
+    const [iceCreamRows] = await promisePool.query('SELECT * FROM IceCream');
+    const [userRows] = await promisePool.query('SELECT * FROM Users');
+    res.render('pages/admin', {
+      title: 'Main page',
+      js: [],
+      data: { iceCreams: iceCreamRows, users: userRows },
+    });
+  } catch (error) {
+    console.error('Error querying the database:', error);
+    res.status(500).send('Error querying the database');
+  }
+});
+
+// index page
+app.get("/", async (req, res) => {
+  try {
+    const [rows] = await promisePool.query('SELECT * FROM IceCream');
     res.render('pages/index', {
       title: 'Main page',
       js: [],
-      data: { iceCreams: iceCreamData },
+      data: { iceCreams: rows },
     });
   } catch (error) {
-    console.error('Error reading ice cream data:', error);
-    res.status(500).send('Error reading ice cream data');
+    console.error('Error querying the database:', error);
+    res.status(500).send('Error querying the database');
   }
 });
 
 // catalog page
 app.get('/catalog', async (req, res) => {
   try {
-    const iceCreamData = await readJsonFile('./src/data/icecream.json'); // Adjust the path if necessary
+    const [rows] = await promisePool.query('SELECT * FROM IceCream');
     res.render('pages/catalog', {
       title: 'Our menu',
       js: [],
-      data: { iceCreams: iceCreamData },
+      data: { iceCreams: rows },
     });
   } catch (error) {
-    console.error('Error reading ice cream data:', error);
-    res.status(500).send('Error reading ice cream data');
+    console.error('Error querying the database:', error);
+    res.status(500).send('Error querying the database');
   }
 });
 
 // about page
-app.get('/about', (req, res) => {
-  res.render('pages/about', {
-    title: 'About us',
+app.get("/about", (req, res) => {
+  res.render("pages/about", {
+    title: "About us",
     js: [],
     data: {},
   });
 });
 
 // cart page
-app.get('/cart', (req, res) => {
-  res.render('pages/cart', {
-    title: 'Cart page',
+app.get("/cart", (req, res) => {
+  res.render("pages/cart", {
+    title: "Cart page",
     js: [],
     data: {},
   });
 });
 
 // login page
-app.get('/login', (req, res) => {
-  res.render('pages/login', {
-    title: 'Login page',
+app.get("/login", (req, res) => {
+  res.render("pages/login", {
+    title: "Login page",
     js: [],
     data: {},
   });
 });
 
 // orders page
-app.get('/orders', (req, res) => {
-  res.render('pages/orders', {
-    title: 'Orders page',
+app.get("/orders", (req, res) => {
+  res.render("pages/orders", {
+    title: "Orders page",
     js: [],
     data: {},
   });
 });
 
 
-// Function to read data from JSON files
-async function readJsonFile(filename) {
+// admin endpoints
+/* app.use('/admin', adminRouter); */
+
+
+// Login functions
+app.post('/api/auth/login', async (req, res) => {
+  const userCreds = {
+    username: req.body.username,
+    password: req.body.password,
+  };
+
   try {
-    const data = await fs.readFile(filename, 'utf-8');
-    return JSON.parse(data);
+    const user = await login(userCreds);
+
+    if (user) {
+      // Successful login
+      res.send('Login successful');
+    } else {
+      // Failed login
+      res.send('Invalid credentials');
+    }
   } catch (error) {
-    console.error('Error reading JSON file:', error.message);
-    return { error: 'Error reading JSON file' };
+    // Handle other errors
+    res.send('An error occurred');
   }
-}
+});
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

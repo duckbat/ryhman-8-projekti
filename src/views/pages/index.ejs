@@ -47,19 +47,19 @@
 
   <!-- Catalogue -->
   <div class="row row-cols-1 row-cols-md-2 g-4">
-    <% data.iceCreams.slice(0, 4).forEach(iceCream => { %>
+    <% data.iceCreams.slice(0, 4).forEach(IceCream => { %>
       <div class="col">
         <div class="card">
           <img
-            src="<%= iceCream.IceCreamImage %>"
+            src="<%= IceCream.IceCreamImage %>"
             class="card-img-top"
-            alt="<%= iceCream.IceCreamName %>"
+            alt="<%= IceCream.IceCreamName %>"
             style="width: auto; max-height: 350px; object-fit: cover; object-position: center;"
           />
           <div class="card-body">
-            <h5 class="card-title"><%= iceCream.IceCreamName %></h5>
+            <h5 class="card-title"><%= IceCream.IceCreamName %></h5>
             <p class="card-text">
-              <%= iceCream.IceCreamDescription %>
+              <%= IceCream.IceCreamDescription %>
             </p>
           </div>
         </div>

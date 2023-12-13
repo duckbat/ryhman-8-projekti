@@ -1,31 +1,90 @@
-<%- include('../partials/head'); %>
-<%- include('../partials/nav'); %>
+<%- include('../partials/head'); %> <%- include('../partials/nav'); %>
 
 <main>
+  <!-- Icecream section -->
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Icecream section</h1>
+  <a href="#" class="btn btn-primary edit-button mb-3" id>Add Icecream</a>
+
+  <% data.iceCreams.forEach(IceCream => { %>
+  <div class="card-deck mb-1 shadow-sm">
+    <div class="card">
+      <div class="row no-gutters">
+        <div class="col-md-9">
+          <div class="card-body">
+            <h3 class="card-title fw-bold"><%= IceCream.IceCreamName %></h3>
+            <p class="card-text"><h4>Description:</h4> <%= IceCream.IceCreamDescription %></p>
+            <hr>
+            <p class="card-text"><h4>Price:</h4> $<%= IceCream.IceCreamPrice %></p>
+            <hr>
+            <p class="card-text"><h4>Special Dietary Requirements:</h4> <%= IceCream.IceCreamDietary %></p>
+            <hr>
+            <a href="#" class="btn btn-primary edit-button" id="<%= IceCream.IceCreamID %>">edit</a>
+            <a href="#" class="btn btn-primary edit-button" id="<%= IceCream.IceCreamID %>">delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>
+
+  <!-- User section -->
   <div class="container mt-5">
-    <h2 class="text-center mb-4">Add New Ice Cream</h2>
+    <h1 class="text-center mb-4">Users section</h1>
+    <a href="#" class="btn btn-primary edit-button mb-3" id>Add User</a>
 
-    <form action="/admin/add-icecream" method="post" enctype="multipart/form-data">
-      <div class="form-group">
-        <label for="name">Ice Cream Name:</label>
-        <input type="text" class="form-control" id="name" name="name" required>
+    <% data.users.forEach(Users => { %>
+    <div class="card-deck mb-1 shadow-sm">
+      <div class="card">
+        <div class="row no-gutters">
+          <div class="col-md-9">
+            <div class="card-body">
+              <h3 class="card-title fw-bold"><%= Users.Username %></h3>
+              <p class="card-text"><h4>id:</h4> <%= Users.UserID %></p>
+              <hr>
+              <p class="card-text"><h4>level:</h4> <%= Users.UserLevel %></p>
+              <hr>
+              <p class="card-text"><h4>password:</h4> <%= Users.Password %></p>
+              <hr>
+              <p class="card-text"><h4>email:</h4> <%= Users.Email %></p>
+              <hr>
+              <p class="card-text"><h4>phone:</h4> <%= Users.Phone %></p>
+              <hr>
+              <p class="card-text"><h4>created_at:</h4> <%= Users.created_at %></p>
+              <hr>
+              <a href="#" class="btn btn-primary edit-button" id="<%= Users.UserID %>">edit</a>
+              <a href="#" class="btn btn-primary edit-button" id="<%= Users.UserID %>">delete</a>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-      </div>
-
-      <!-- Add more form fields for other ice cream details -->
-
-      <div class="form-group">
-        <label for="image">Image:</label>
-        <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Add Ice Cream</button>
-    </form>
+    </div>
+    <% }) %>
   </div>
 </main>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    try {
+      const response = await fetch("/api/items");
+      const items = await response.json();
+
+      // Render items using EJS
+      const itemsContainer = document.getElementById("items-container");
+      itemsContainer.innerHTML = items
+        .map(
+          (item) => `
+        <div class="item">
+          <p>${item.name}</p>
+          <!-- Add more item details as needed -->
+        </div>
+      `
+        )
+        .join("");
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  });
+</script>
 
 <%- include('../partials/footer'); %>

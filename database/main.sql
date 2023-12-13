@@ -2,11 +2,6 @@ DROP DATABASE IF EXISTS ice_dude;
 CREATE DATABASE ice_dude;
 USE ice_dude;
 
-CREATE TABLE UserLevels (
-    level_id INT PRIMARY KEY AUTO_INCREMENT,
-    level_name VARCHAR(50) NOT NULL
-);
-
 CREATE TABLE Users (
     UserID INT PRIMARY KEY AUTO_INCREMENT,
     UserLevel INT CHECK (UserLevel IN (1,2)) NOT NULL,

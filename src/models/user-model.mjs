@@ -8,7 +8,7 @@ import { promisePool } from "../utils/database.mjs";
  */
 const login = async (userCreds) => {
   try {
-    const sql = `SELECT user_id, username, email, user_level_id
+    const sql = `SELECT UserID, Username, Email, UserLevel
                  FROM Users WHERE username = ? AND password = ?`;
     const params = [userCreds.username, userCreds.password];
     const result = await promisePool.query(sql, params);
@@ -19,6 +19,33 @@ const login = async (userCreds) => {
     return { error: e.message };
   }
 };
+
+const fetchUsers = async () => {
+  try {
+    const sql = `SELECT UserID, Username, Email, UserLevel
+                 FROM Users`;
+    const result = await promisePool.query(sql);
+    const [rows] = result; // first item in result array is the data rows
+    return rows;
+  } catch (e) {
+    console.error("error", e.message);
+    return { error: e.message };
+  }
+};
+
+const fetchUsersID = async (id) => {
+  try {
+    const sql = `SELECT UserID, Username, Email, UserLevel
+                 FROM Users WHERE UserID=?`;
+    const params = [id];
+    const [rows] = await promisePool.query(sql, params);
+    console.log("rows", rows);
+    return rows[0];
+  } catch (e) {
+    console.error("error", e.message);
+    return { error: e.message };
+  }
+}
 
 /**
  * Creates a new user in the database
@@ -40,4 +67,4 @@ const addUser = async (user) => {
   }
 };
 
-export { login, addUser };
+export { login, addUser, fetchUsers, fetchUsersID };

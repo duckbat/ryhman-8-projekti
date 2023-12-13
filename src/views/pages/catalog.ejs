@@ -7,28 +7,28 @@
   <div class="container mt-5">
     <h2 class="text-center mb-4">Ice Cream Menu</h2>
     
-    <% data.iceCreams.forEach(iceCream => { %>
+    <% data.iceCreams.forEach(IceCream => { %>
       <div class="card-deck mb-4 shadow-sm">
         <div class="card">
           <div class="row no-gutters">
             <div class="col-md-3">
               <img
-                src="<%= iceCream.IceCreamImage %>"
+                src="<%= IceCream.IceCreamImage %>"
                 class="card-img"
-                alt="<%= iceCream.IceCreamName %>"
+                alt="<%= IceCream.IceCreamName %>"
                 style="max-width: 100%; max-height: 250px; object-fit: cover; object-position: center;"
               />
             </div>
             <div class="col-md-9">
               <div class="card-body">
-                <h5 class="card-title"><%= iceCream.IceCreamName %></h5>
-                <p class="card-text"><%= iceCream.IceCreamDescription %></p>
+                <h5 class="card-title"><%= IceCream.IceCreamName %></h5>
+                <p class="card-text"><%= IceCream.IceCreamDescription %></p>
                 <p class="card-text">
-                  <small class="text-muted">Price: $<%= iceCream.IceCreamPrice.toFixed(2) %></small>
+                  <small class="text-muted">Price: $<%= IceCream.IceCreamPrice %></small>
                 </p>
                 <p class="card-text">
                   <small class="text-muted"
-                    >Special Dietary Requirements: <%= iceCream.IceCreamDietary.join(', ') || 'None' %></small
+                    >Special Dietary Requirements: <%= IceCream.IceCreamDietary %></small
                   >
                 </p>
                 <a href="#" class="btn btn-primary">Add to Cart</a>
