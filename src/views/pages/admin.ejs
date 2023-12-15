@@ -1,38 +1,38 @@
 <%- include('../partials/head'); %> <%- include('../partials/nav'); %>
 
 <main>
-  <!-- Icecream section -->
-<div class="container mt-5">
-  <h1 class="text-center mb-4">Icecream section</h1>
-  <a href="#" class="btn btn-primary edit-button mb-3" id>Add Icecream</a>
+  <!-- Ice cream section -->
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Ice cream section</h1>
+    <a href="#" class="btn btn-primary edit-button mb-3" id="addIceCream">Add Ice cream</a>
 
-  <% data.iceCreams.forEach(IceCream => { %>
-  <div class="card-deck mb-1 shadow-sm">
-    <div class="card">
-      <div class="row no-gutters">
-        <div class="col-md-9">
-          <div class="card-body">
-            <h3 class="card-title fw-bold"><%= IceCream.IceCreamName %></h3>
-            <p class="card-text"><h4>Description:</h4> <%= IceCream.IceCreamDescription %></p>
-            <hr>
-            <p class="card-text"><h4>Price:</h4> $<%= IceCream.IceCreamPrice %></p>
-            <hr>
-            <p class="card-text"><h4>Special Dietary Requirements:</h4> <%= IceCream.IceCreamDietary %></p>
-            <hr>
-            <a href="#" class="btn btn-primary edit-button" id="<%= IceCream.IceCreamID %>">edit</a>
-            <a href="#" class="btn btn-primary edit-button" id="<%= IceCream.IceCreamID %>">delete</a>
+    <% data.iceCreams.forEach(IceCream => { %>
+    <div class="card-deck mb-1 shadow-sm">
+      <div class="card">
+        <div class="row no-gutters">
+          <div class="col-md-9">
+            <div class="card-body">
+              <h3 class="card-title fw-bold"><%= IceCream.IceCreamName %></h3>
+              <p class="card-text"><h4>Description:</h4> <%= IceCream.IceCreamDescription %></p>
+              <hr>
+              <p class="card-text"><h4>Price:</h4><%= IceCream.IceCreamPrice %>€</p>
+              <hr>
+              <p class="card-text"><h4>Special Dietary Requirements:</h4> <%= IceCream.IceCreamDietary %></p>
+              <hr>
+              <a href="#" class="btn btn-primary edit-button" data-id="<%= IceCream.IceCreamID %>">edit</a>
+              <a href="#" class="btn btn-primary delete-button" data-id="<%= IceCream.IceCreamID %>">delete</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <% }) %>
   </div>
-  <% }) %>
-</div>
 
   <!-- User section -->
   <div class="container mt-5">
     <h1 class="text-center mb-4">Users section</h1>
-    <a href="#" class="btn btn-primary edit-button mb-3" id>Add User</a>
+    <a href="#" class="btn btn-primary edit-button mb-3" id="addUser">Add User</a>
 
     <% data.users.forEach(Users => { %>
     <div class="card-deck mb-1 shadow-sm">
@@ -41,20 +41,20 @@
           <div class="col-md-9">
             <div class="card-body">
               <h3 class="card-title fw-bold"><%= Users.Username %></h3>
-              <p class="card-text"><h4>id:</h4> <%= Users.UserID %></p>
+              <p class="card-text"><h4>ID:</h4> <%= Users.UserID %></p>
               <hr>
-              <p class="card-text"><h4>level:</h4> <%= Users.UserLevel %></p>
+              <p class="card-text"><h4>Level:</h4> <%= Users.UserLevel %></p>
               <hr>
-              <p class="card-text"><h4>password:</h4> <%= Users.Password %></p>
+              <p class="card-text"><h4>Password:</h4> <%= Users.Password %></p>
               <hr>
-              <p class="card-text"><h4>email:</h4> <%= Users.Email %></p>
+              <p class="card-text"><h4>Email:</h4> <%= Users.Email %></p>
               <hr>
-              <p class="card-text"><h4>phone:</h4> <%= Users.Phone %></p>
+              <p class="card-text"><h4>Phone:</h4> <%= Users.Phone %></p>
               <hr>
-              <p class="card-text"><h4>created_at:</h4> <%= Users.created_at %></p>
+              <p class="card-text"><h4>Created_at:</h4> <%= Users.created_at %></p>
               <hr>
-              <a href="#" class="btn btn-primary edit-button" id="<%= Users.UserID %>">edit</a>
-              <a href="#" class="btn btn-primary edit-button" id="<%= Users.UserID %>">delete</a>
+              <a href="#" class="btn btn-primary edit-button" data-id="<%= Users.UserID %>">edit</a>
+              <a href="#" class="btn btn-primary delete-button" data-id="<%= Users.UserID %>">delete</a>
             </div>
           </div>
         </div>
@@ -62,29 +62,183 @@
     </div>
     <% }) %>
   </div>
-</main>
-<script>
-  document.addEventListener("DOMContentLoaded", async () => {
-    try {
-      const response = await fetch("/api/items");
-      const items = await response.json();
 
-      // Render items using EJS
-      const itemsContainer = document.getElementById("items-container");
-      itemsContainer.innerHTML = items
-        .map(
-          (item) => `
-        <div class="item">
-          <p>${item.name}</p>
-          <!-- Add more item details as needed -->
-        </div>
-      `
-        )
-        .join("");
-    } catch (error) {
-      console.error("Error fetching items:", error);
-    }
+<!-- Ice Cream Modal -->
+<div id="addIceCreamModal" class="modal" tabindex="-1">
+  <div class="modal-content">
+    <span class="close" id="closeModal">&times;</span>
+    <h2>Add Ice Cream</h2>
+    <form id="iceCreamForm">
+      <label for="iceCreamName">Name:</label>
+      <input type="text" id="iceCreamName" name="iceCreamName" required>
+      <hr>
+
+      <label for="iceCreamDescription">Description:</label>
+      <input type="text" id="iceCreamDescription" name="iceCreamDescription" required>
+      <hr>
+
+      <label for="iceCreamDietary">Dietary:</label>
+      <input type="text" id="iceCreamDietary" name="iceCreamDietary" required>
+      <hr>
+
+      <label for="iceCreamPrice">Price ($):</label>
+      <input type="number" step="0.01" id="iceCreamPrice" name="iceCreamPrice" required>
+      <hr>
+
+      <label for="iceCreamImage">Image URL:</label>
+      <input type="text" id="iceCreamImage" name="iceCreamImage">
+      <hr>
+
+      <button type="button" id="submitIceCream">Add Ice Cream</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- Users Modal -->
+<div id="addUserModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeUserModal">&times;</span>
+    <h2>Add User</h2>
+    <form id="userForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="userLevel">User Level:</label>
+      <select id="userLevel" name="userLevel" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+
+      <button type="button" id="submitUser">Add User</button>
+    </form>
+  </div>
+</div>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+
+    // Delete
+  const deleteButtons = document.querySelectorAll(".delete-button");
+
+  deleteButtons.forEach(button => {
+    button.addEventListener("click", async (event) => {
+      const iceCreamId = event.target.getAttribute("data-id");
+
+      try {
+        const response = await fetch(`/api/iceCream/${iceCreamId}`, {
+          method: 'DELETE',
+        });
+
+        if (response.ok) {
+          // Optionally, you can remove the deleted item from the UI
+          event.target.closest(".card-deck").remove();
+        } else {
+          console.error(`Failed to delete ice cream with ID ${iceCreamId}`);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    });
   });
+
+// Edit Ice Creams and Users
+const editButtons = document.querySelectorAll(".edit-button");
+editButtons.forEach(button => {
+  button.addEventListener("click", (event) => {
+    const userId = event.target.getAttribute("data-id");
+    // Handle edit and delete logic based on userId
+    console.log(`Edit Ice Cream with ID: ${userId}`);
+  });
+});
+
+
+
+// Open the Add Ice Cream modal
+const addIceCreamButton = document.getElementById("addIceCream");
+const addIceCreamModal = document.getElementById("addIceCreamModal");
+const closeModalButton = document.getElementById("closeModal");
+
+addIceCreamButton.addEventListener("click", () => {
+  addIceCreamModal.style.display = "block";
+});
+
+closeModalButton.addEventListener("click", () => {
+  addIceCreamModal.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target === addIceCreamModal) {
+    addIceCreamModal.style.display = "none";
+  }
+});
+
+// Handle adding ice cream
+const submitIceCreamButton = document.getElementById("submitIceCream");
+submitIceCreamButton.addEventListener("click", () => {
+  const iceCreamForm = document.getElementById("iceCreamForm");
+  const iceCreamData = new FormData(iceCreamForm);
+
+  // Use iceCreamData to send the new ice cream information to the server
+  // You can use fetch() or another method to handle the server interaction
+
+  // After successfully adding the ice cream, you may want to update the UI
+  // For example, you can append the new ice cream card to the existing ice cream section
+
+  // Finally, close the modal
+  addIceCreamModal.style.display = "none";
+});
+
+// Open the Add User modal
+const addUserButton = document.getElementById("addUser");
+const addUserModal = document.getElementById("addUserModal");
+const closeUserModalButton = document.getElementById("closeUserModal");
+
+addUserButton.addEventListener("click", () => {
+  addUserModal.style.display = "block";
+});
+
+closeUserModalButton.addEventListener("click", () => {
+  addUserModal.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target === addUserModal) {
+    addUserModal.style.display = "none";
+  }
+});
+
+// Handle adding users
+const submitUserButton = document.getElementById("submitUser");
+submitUserButton.addEventListener("click", () => {
+  const userForm = document.getElementById("userForm");
+  const userData = new FormData(userForm);
+
+  // Use userData to send the new user information to the server
+  // You can use fetch() or another method to handle the server interaction
+
+  // After successfully adding the user, you may want to update the UI
+  // For example, you can append the new user card to the existing user section
+
+  // Finally, close the modal
+  addUserModal.style.display = "none";
+});
+
+});
+
+
 </script>
+
 
 <%- include('../partials/footer'); %>

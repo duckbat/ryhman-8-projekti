@@ -1,0 +1,48 @@
+<%- include('../partials/head'); %>
+<%- include('../partials/button'); %> 
+<%- include('../partials/nav'); %>
+
+<div class="container" id="log-con">
+    <div class="login-container">
+      <h2>Login to Your Account</h2>
+      <form action="/api/auth/login" method="post">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          class="form-control"
+          required
+        />
+        
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <p style = "color:red" class="mb-0">Wrong username or password</p>
+        <p style = "color:red">"or you just dont exist"</p>
+  
+        <button type="submit" class="btn btn-success" style="margin-top: 20px;">Login</button>
+      </form>
+    </div>
+  </div>
+  
+  <style>
+    #log-con {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 75vh;
+    }
+    
+  </style>
+
+
+<%- include('../partials/footer'); %>

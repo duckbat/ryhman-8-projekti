@@ -1,4 +1,5 @@
-## auth/login
+### GET 
+
 
 ### POST /api/auth/login
 POST http://localhost:3000/api/auth/login
@@ -20,7 +21,7 @@ GET http://localhost:3000/morjes
 ## /api/media endpoit
 
 ### Get all media
-GET http://localhost:3000/api/media
+GET http://localhost:3000/api/
 
 ### Get media by id
 GET http://localhost:3000/api/media/3

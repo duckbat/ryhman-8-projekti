@@ -1,27 +1,38 @@
-import express from 'express';
-import {
-  deleteUser,
-  getUserById,
-  getUsers,
-  postUser,
-  putUser,
-} from '../controllers/user-controller.mjs';
-import {body} from 'express-validator';
+// ... (previous code)
 
-const userRouter = express.Router();
+// User Routes
+app.post("/api/users", async (req, res) => {
+  try {
+    const userData = req.body;
+    const result = await usersModel.addUser(userData);
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
-// routes for /api/users/
-userRouter
-  .route('/')
-  .get(getUsers)
-  .post(
-    body('email').trim().isEmail(),
-    body('username').trim().isLength({min: 3, max: 20}).isAlphanumeric(),
-    body('password').trim().isLength({min: 8}),
-    postUser
-  );
+app.delete("/api/users/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const result = await usersModel.deleteUser(userId);
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
-// routes for /api/users/:id
-userRouter.route('/:id').get(getUserById).put(putUser).delete(deleteUser);
+app.put("/api/users/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const userData = req.body;
+    const result = await usersModel.updateUser(userId, userData);
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
-export default userRouter;
+// ... (remaining code)
